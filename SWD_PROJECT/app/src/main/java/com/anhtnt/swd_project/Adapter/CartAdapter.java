@@ -47,7 +47,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.RecyclerViewHo
                 mListener.setOnItemClickListener(position);
             }
         });
-        holder.mTextViewDate.setText(data.get(position).getFood().getTaken_day());
+        holder.mTextViewDate.setText(data.get(position).getFood().getQuatity()+"");
     }
 
 

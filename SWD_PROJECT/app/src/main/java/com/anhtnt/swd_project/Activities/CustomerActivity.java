@@ -34,6 +34,7 @@ public class CustomerActivity extends AppCompatActivity implements OrderView,Cre
     private Product mProduct;
     private  Button  mButton;
     private CreateCustomerView mCreateCustomerView;
+    private  CreateOrderView mCreateOrderView;
     private EditText nameView,addressView,genderView,phoneView;
     private String day;
     private  boolean  checkOrder = false;
@@ -54,7 +55,7 @@ public class CustomerActivity extends AppCompatActivity implements OrderView,Cre
         mButton.setOnClickListener(this);
     }
     private  void getData(){
-        Bundle bundle = new Bundle();
+        Bundle bundle = getIntent().getExtras();
         mProduct = (Product) bundle.getSerializable(ProductDetail.BUNDLE_PRODUCT_DETAIL);
     }
     private  void initialData(){
@@ -63,16 +64,9 @@ public class CustomerActivity extends AppCompatActivity implements OrderView,Cre
         String address = addressView.getText().toString();
         String gender = genderView.getText().toString();
         String phone = phoneView.getText().toString();
-        OrderItem orderItemEntity = new OrderItem();
-        String orderId = UUID.randomUUID().toString();
-        orderItemEntity.setOrderItemId(orderId);
-        Product productOrder = mProduct;
-        orderItemEntity.setFood(productOrder);
-        mOrderPresenter = new OrderPresenter(CustomerActivity.this,getApplication(),this);
-        mOrderPresenter.addOrderToCart(orderItemEntity);
         mCreateCustomerPresenterl = new CreateCustomerPresenter(CustomerActivity.this,CustomerActivity.this,mCreateCustomerView);
-        mCreateCustomerPresenterl.showRequestCreateOrder(name,address,gender,phone);
-        mCreateOrderPresenter = new CreateOrderPresenter(CustomerActivity.this, CustomerActivity.this,this);
+        mCreateCustomerPresenterl.showRequestCreateCustomer(name,address,gender,phone);
+        mCreateOrderPresenter = new CreateOrderPresenter(CustomerActivity.this, CustomerActivity.this,mCreateOrderView);
         mCreateOrderPresenter.showRequestCreateOrder(mProduct.getId(),mProduct.getQuatity());
 
     }
@@ -108,17 +102,20 @@ public class CustomerActivity extends AppCompatActivity implements OrderView,Cre
         switch (pos){
             case  R.id.button_order:
                 initialData();
-                if(checkOrder && checkCustommer){
+                    OrderItem orderItemEntity = new OrderItem();
+                    String orderId = UUID.randomUUID().toString();
+                    orderItemEntity.setOrderItemId(orderId);
+                    Product productOrder = mProduct;
+                    orderItemEntity.setFood(productOrder);
+                    mOrderPresenter = new OrderPresenter(CustomerActivity.this,getApplication(),this);
+                    mOrderPresenter.addOrderToCart(orderItemEntity);
                     Toast.makeText(CustomerActivity.this,"Order thành công ",Toast.LENGTH_LONG).show();
                     intentToHome();
 
-                }
-                Toast.makeText(CustomerActivity.this,"Order  không thành công ",Toast.LENGTH_LONG).show();
                 break;
         }
     }
     private  void intentToHome(){
-
         Intent intent = new Intent(CustomerActivity.this,HomeActivity.class);
         startActivity(intent);
     }

@@ -14,7 +14,7 @@ public interface AppService {
     @POST(ConfigApi.Api.GET_PRODUCT_Tat_Ca_San_Pham)
     Call<ResponseBody> getJsonSanPham();
     @FormUrlEncoded
-    @GET(ConfigApi.Api.CREATE_CUSTOMER)
+    @POST(ConfigApi.Api.CREATE_CUSTOMER)
     Call<ResponseBody> createCustomer(
             @Field("name") String name,
             @Field("address") String address,
@@ -22,7 +22,7 @@ public interface AppService {
             @Field("phone") String phone
             );
     @FormUrlEncoded
-    @GET(ConfigApi.Api.CREATE_ORDER)
+    @POST(ConfigApi.Api.CREATE_ORDER)
     Call<ResponseBody> createOrder(
             @Field("productId") int productId,
             @Field("quantity") int quatity

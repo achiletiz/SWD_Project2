@@ -23,7 +23,7 @@ public class CreateCustomerPresenter {
 
     }
 
-    public void showRequestCreateOrder(String name, String address, String gender, String phone) {
+    public void showRequestCreateCustomer(String name, String address, String gender, String phone) {
         mAppRepository.createCustomer(context, name, address, gender, phone, new CallBackData<RequestCreate>() {
             @Override
             public void onSuccess(RequestCreate requestCreate) {

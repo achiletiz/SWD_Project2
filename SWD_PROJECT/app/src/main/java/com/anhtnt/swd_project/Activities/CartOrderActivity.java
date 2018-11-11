@@ -41,12 +41,12 @@ public class CartOrderActivity extends AppCompatActivity  implements CardView{
         }
     }
     private  void iniatailView(){
-        mToolbar = findViewById(R.id.toolbar_home);
+        mToolbar = findViewById(R.id.toolbar_cart);
         setSupportActionBar(mToolbar);
-        mRecyclerView = findViewById(R.id.AllProducts);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(CartOrderActivity.this) ;
-        layoutManager.setOrientation(LinearLayout.VERTICAL);
-        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView = findViewById(R.id.cart);
+        final LinearLayoutManager layoutManager2 = new LinearLayoutManager(CartOrderActivity.this) ;
+        layoutManager2.setOrientation(LinearLayout.VERTICAL);
+        mRecyclerView.setLayoutManager(layoutManager2);
     }
     @Override
     public void showOrder(List<OrderItem> mOrderItemList) {

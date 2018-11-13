@@ -21,12 +21,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Recycler
     private  Context context;
     private  List<Product> data;
     private  setOnClickListener mListener;
-
     public ProductAdapter(Context context, List<Product> mList) {
         this.context = context;
         this.data = mList;
     }
-
     @NonNull
     @Override
     public RecyclerViewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,13 +32,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Recycler
         View view = inflater.inflate(R.layout.row_layout_all_products, parent, false);
         return new RecyclerViewHoler(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHoler holder, final int position) {
         holder.mTextViewName.setText(data.get(position).getName());
         holder.mTextViewPrice.setText(ChangeValue.formatDecimalPrice((float) data.get(position).getPrice()));
-            Picasso.get().load(R.mipmap.loading_button).into(holder.mImageView);
-
+        Picasso.get().load(data.get(position).getImage()).into(holder.mImageView);
         holder.mLinearLayoutSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

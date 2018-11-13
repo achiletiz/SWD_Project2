@@ -39,8 +39,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.RecyclerViewHo
     public void onBindViewHolder(@NonNull RecyclerViewHoler holder, final int position) {
         holder.mTextViewName.setText(data.get(position).getFood().getName());
         holder.mTextViewPrice.setText(ChangeValue.formatDecimalPrice((float) data.get(position).getFood().getPrice()));
-        Picasso.get().load(R.mipmap.loading_button).into(holder.mImageView);
-
+        Picasso.get().load(data.get(position).getFood().getImage()).into(holder.mImageView);
         holder.mLinearLayoutSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +48,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.RecyclerViewHo
         });
         holder.mTextViewDate.setText(data.get(position).getFood().getQuatity()+"");
     }
-
 
     @Override
     public int getItemCount() {

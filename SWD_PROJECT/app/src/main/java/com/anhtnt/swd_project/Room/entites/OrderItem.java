@@ -20,7 +20,6 @@ public class OrderItem implements Serializable {
     @TypeConverters(FoodDataConvert.class)
     @ColumnInfo(name = "food")
     private Product food;
-
     public OrderItem() {
     }
 

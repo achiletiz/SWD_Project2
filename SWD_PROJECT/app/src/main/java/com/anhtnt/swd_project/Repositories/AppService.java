@@ -25,6 +25,9 @@ public interface AppService {
     @POST(ConfigApi.Api.CREATE_ORDER)
     Call<ResponseBody> createOrder(
             @Field("productId") int productId,
-            @Field("quantity") int quatity
+            @Field("quantity") int quatity,
+            @Field("customerPhone") String customerID,
+            @Field("checkInTime") String time,
+            @Field("totalPrice") double price
     );
 }

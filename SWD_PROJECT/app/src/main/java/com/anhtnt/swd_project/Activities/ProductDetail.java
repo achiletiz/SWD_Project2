@@ -56,11 +56,12 @@ public class ProductDetail extends AppCompatActivity  implements View.OnClickLis
         product = (Product) intent.getSerializableExtra(HomeActivity.BUNDLE_ALL);
     }
     private  void iniatialData(){
-            Picasso.get().load(R.mipmap.loading_button).into(mImageViewHinh);
+            Picasso.get().load(product.getImage()).into(mImageViewHinh);
         mTxtViewQuantity.setText(product.getTaken_day());
         mTxtViewPrice.setText(ChangeValue.formatDecimalPrice((float) product.getPrice()));
         mTxtViewName.setText(product.getName());
         mTotal = product.getPrice();
+        mTextViewPriceTotal.setText(ChangeValue.formatDecimalPrice((float) mTotal));
     }
     private void buttonIncrease() {
         mQuantity++;
@@ -100,6 +101,7 @@ public class ProductDetail extends AppCompatActivity  implements View.OnClickLis
             @Override
             public void onClick(View view) {
                 product.setQuatity(mQuantity);
+                product.setTotal(mTotal);
                 intentToCustomer(product);
             }
         });

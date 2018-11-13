@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface AppRepository {
     void getTatCaSanPham(Context context, CallBackData<List<Product>> callBackData);
-    void createOrder(Context context , int productId, int quantity, CallBackData<RequestCreate> mCallBackData);
+    void createOrder(Context context , int productId, int quantity,String  customerPhone,String checkInTime,double totalPrice,CallBackData<RequestCreate> mCallBackData);
     void createCustomer( Context context, String name,String address,String gender,String phone,CallBackData<RequestCreate> mCallBackData);
 }

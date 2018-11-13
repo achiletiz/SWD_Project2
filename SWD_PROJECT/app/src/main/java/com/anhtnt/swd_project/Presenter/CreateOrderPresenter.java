@@ -22,8 +22,8 @@ public class CreateOrderPresenter {
         this.mAppRepository = new AppRepositoryImpl();
 
     }
-    public  void showRequestCreateOrder(int productID,int quatity){
-        mAppRepository.createOrder(context, productID, quatity, new CallBackData<RequestCreate>() {
+    public  void showRequestCreateOrder(int productID,int quatity,String  customerPhone,String checkInTime,double totalPrice){
+        mAppRepository.createOrder(context, productID, quatity,customerPhone,checkInTime,totalPrice, new CallBackData<RequestCreate>() {
             @Override
             public void onSuccess(RequestCreate requestCreate) {
                 mCreateOrderView.showSuccessOrder(requestCreate);

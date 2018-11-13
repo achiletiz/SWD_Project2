@@ -58,9 +58,9 @@ public class AppRepositoryImpl  implements  AppRepository {
     }
 
     @Override
-    public void createOrder(Context context, int productId, int quantity, final CallBackData<RequestCreate> callBackData) {
+    public void createOrder(Context context, int productId, int quantity,String customerPhone,String checkInTime,double totalPrice, final CallBackData<RequestCreate> callBackData) {
         ClientApi clientApi = new ClientApi();
-        Call<ResponseBody> serviceCall = clientApi.appService().createOrder(productId,quantity);
+        Call<ResponseBody> serviceCall = clientApi.appService().createOrder(productId,quantity,customerPhone,checkInTime,totalPrice);
         serviceCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -37,8 +37,8 @@ public class CustomerActivity extends AppCompatActivity implements OrderView,Cre
     private  CreateOrderView mCreateOrderView;
     private EditText nameView,addressView,genderView,phoneView;
     private String day;
-    private  boolean  checkOrder = false;
-    private  boolean    checkCustommer = false;
+    private  boolean checkCustommer = false;
+    private boolean checkOrder = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,7 @@ public class CustomerActivity extends AppCompatActivity implements OrderView,Cre
         mCreateCustomerPresenterl = new CreateCustomerPresenter(CustomerActivity.this,CustomerActivity.this,mCreateCustomerView);
         mCreateCustomerPresenterl.showRequestCreateCustomer(name,address,gender,phone);
         mCreateOrderPresenter = new CreateOrderPresenter(CustomerActivity.this, CustomerActivity.this,mCreateOrderView);
-        mCreateOrderPresenter.showRequestCreateOrder(mProduct.getId(),mProduct.getQuatity());
+        mCreateOrderPresenter.showRequestCreateOrder(mProduct.getId(),mProduct.getQuatity(),phone,day,mProduct.getPrice());
 
     }
     @Override
